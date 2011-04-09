@@ -23,9 +23,12 @@ give you the ability to shorten our own URLs.  It uses the technology of the
 Flask microframework and jessex's shrtn code.
 
 ## Instructions
-$ easy-install Flask
-$ python Flask-shrtn.py
-  * running on http://localhost:5000/
+>$ easy-install Flask
+>$ easy-install Flask-SQLAlchemy
+>$ easy-install Flask-WTF
+>$ git clone git://github.com/joshfinnie/Flask-shrtn.git
+>$ python Flask-shrtn.py
+>  * running on http://localhost:5000/
 
 ## License
 Copyright (C) 2011 by Josh Finnie
