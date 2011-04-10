@@ -16,8 +16,8 @@ import sys, re
 from urlparse import urlparse
 
 ALPHABET = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
-OURDOMAIN = "http://s.jfin.us"
-re_short = re.compile(OURDOMAIN + "[a-kmnp-zA-HJ-NP-Z2-9]+$")
+DOMAIN = "http://s.jfin.us"
+re_short = re.compile(DOMAIN + "[a-kmnp-zA-HJ-NP-Z2-9]+$")
 re_end = re.compile("[.][^/]+$")
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
@@ -79,19 +79,19 @@ def shorten_url(url, conn):
 		id = db.insert_url(url, db.MYTABLE, conn) #insert and get its id
 
 	code = convert_to_code(id)
-	return "%s%s" % (OURDOMAIN, code)
+	return "%s%s" % (DOMAIN, code)
 
 def lengthen_url(url, conn):
 	"""Takes in one of our shortened URLs and returns the correct long url."""
 	#isolate code from shortened url
 	if not is_valid_short(url): #url was not constructed properly
-		return "%s404" % OURDOMAIN
+		return "%s404" % DOMAIN
 	code = url[14:] #just the code, ie. h7K9g0
 
 	id = resolve_to_id(code) #convert shortened code to id
 	long = db.search_id(id, db.MYTABLE, conn)
 	if not long: #id was not found in database
-		return "%s404" % OURDOMAIN #issue 404
+		return "%s404" % DOMAIN #issue 404
 	return long #url to perform 301 re-direct on
 
 def convert_to_code(id, alphabet=ALPHABET):
