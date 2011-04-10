@@ -15,9 +15,9 @@ from datetime import datetime
 import sys, re
 from urlparse import urlparse
 
-ALPHABET = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+ALPHABET = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"
 DOMAIN = "http://s.jfin.us"
-re_short = re.compile(DOMAIN + "[a-kmnp-zA-HJ-NP-Z2-9]+$")
+re_short = re.compile(DOMAIN + "[a-kmnop-zA-HJ-NP-Z2-9]+$")
 re_end = re.compile("[.][^/]+$")
 
 from flask import Flask, request, session, g, redirect, url_for, abort, \
