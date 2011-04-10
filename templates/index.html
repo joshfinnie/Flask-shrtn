@@ -1,15 +1,18 @@
 {% extends "layout.html" %}
 
 {% block header %}
-<h1>Welcome to {{ config.SITE_NAME }}</h1>
+<h1>Welcome to s.jfin.us - Josh Finnie's URL Shortener</h1>
 {% endblock %}
 
 {% block body %}
-<p>
-Hello World, at {{ now() }}
-</p>
+<form action="{{ url_for('add_entry') }}" method=post>
+    {{ form.hidden_tag() }}
+    {{url}}<br />
+    {{short_url}}<br />
+    {{form.submit}}
+</form>
 {% endblock %}
 
 {% block footer %}
-Copyright 2010, {{ config.SITE_NAME }}
+&copy; 2011 Josh Finnie
 {% endblock %}
